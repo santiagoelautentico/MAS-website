@@ -1,0 +1,367 @@
+---
+import quienesPicture from "../assets/quienesMAS.webp";
+// import locationImg from "../assets/location.webp";
+import Image from "astro/components/Image.astro";
+import instagram from "../assets/ig-icon.svg?raw";
+import facebook from "../assets/face-icon.svg?raw";
+import tiktok from "../assets/tiktok-icon.svg?raw";
+---
+
+<section class="white-section">
+  <article>
+    <div class="picture-container">
+      <Image
+        src={quienesPicture}
+        alt="Foto en grupo del MAS"
+        class="whoPicture"
+      />
+    </div>
+    <div>
+      <h2>¿Quienes Somos?</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
+        <br />
+        <br />
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+        eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+        sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+  </article>
+  <article class="box-containers">
+    <div class="box">
+      <h3>Patio</h3>
+      <span>Un rato para ponernos al día y tomar unos mates</span>
+    </div>
+    <div class="box">
+      <h3>Actividades</h3>
+      <span>Juegos / dinámicas que nos unen </span>
+    </div>
+    <div class="box">
+      <h3>Reflexión</h3>
+      <span>Bajo la palabra de dios, juntos reflexionamos y noseque</span>
+    </div>
+  </article>
+  <article class="maps-container">
+    <div>
+      <h2>Ven a visitarnos!</h2>
+    </div>
+    <div id="map" class="map-embed"></div>
+    <!-- <span>Puedes entrar por salterain, o por la iglesia</span> -->
+    <!-- <div>
+      <Image src={locationImg} alt="location img" class="locationImg" />
+    </div>
+    <p>
+      <span>Canelones 2130</span>
+      <br />
+      esquina <span>Joaquín de Salterain</span>
+    </p> -->
+  </article>
+  <article class="socialMedia-container">
+    <div>
+      <a href="https://www.instagram.com/mastdb_/" class="icon-media" set:html={instagram} />
+      <a href="https://www.facebook.com/mastdb" class="icon-media" set:html={facebook} />
+      <a href="" class="icon-media" set:html={tiktok} />
+    </div>
+    <div class="points">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <h2>Siguenos en nuestras redes</h2>
+  </article>
+</section>
+
+<style>
+  .socialMedia-container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 2rem;
+  }
+  .socialMedia-container > div:nth-child(2) {
+    opacity: 0;
+  }
+  .socialMedia-container > h2 {
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+  }
+  .socialMedia-container > div:nth-child(1) {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+  .points {
+    display: flex;
+    gap: 1rem;
+  }
+  .points > div {
+    width: 1rem;
+    height: 1rem;
+    background-color: red;
+    border-radius: 50%;
+  }
+  .points > div:nth-child(1) {
+    background-color: #2432db;
+  }
+  .points > div:nth-child(2) {
+    background-color: #ce0002;
+  }
+  .points > div:nth-child(3) {
+    background-color: #f3ab49;
+  }
+  .white-section {
+    position: relative; /* NADA de sticky acá */
+    z-index: 10; /* más alto que el Hero, así lo tapa */
+    margin-inline: 5vw;
+    background: linear-gradient(#ffffff, #d9d9d9);
+    border: 10px solid black;
+    margin-top: -2rem;
+    border-radius: 12px 12px 0 0;
+  }
+  .white-section > article:first-child {
+    padding: 2.5rem;
+  }
+  .picture-container {
+    height: 20vh;
+    border: 8px solid black;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  .whoPicture {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 4rem;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  .box:nth-child(1) {
+    border-style: solid;
+    border-color: black;
+    border-width: 8px 0px 4px 0px;
+    background-color: #d1e9f6;
+    box-shadow: inset 0 0 0 4px #9ddcff;
+  }
+  .box:nth-child(2) {
+    border-style: solid;
+    border-color: black;
+    border-width: 4px 0px;
+    background-color: #d25353;
+    box-shadow: inset 0 0 0 4px #c13838;
+    color: white;
+  }
+  .box:nth-child(3) {
+    border-style: solid;
+    border-color: black;
+    border-width: 4px 0px 8px 0px;
+    background-color: #f9e8a2;
+    box-shadow: inset 0 0 0 4px #ffdf5b;
+  }
+  .maps-container {
+    display: flex;
+    flex-direction: column;
+    padding: 2.5rem;
+    gap: 1rem;
+    padding-block: 2rem;
+  }
+  .maps-container > div:nth-child(2) {
+    aspect-ratio: 1/1;
+  }
+  .maps-container > div:nth-child(2) {
+    width: 100%;
+    height: 100%;
+    border: 8px solid black;
+    border-radius: 8px;
+  }
+  article > p > span {
+    color: #2432db;
+    text-decoration: underline;
+  }
+
+  .icon-media {
+    width: 3em;
+  }
+  @media (min-width: 900px) {
+    .socialMedia-container > div:nth-child(2) {
+      opacity: 1;
+    }
+    .socialMedia-container {
+      display: flex;
+      align-items: center;
+      gap: 5rem;
+      padding-inline: 4vw;
+      justify-content: space-between;
+      padding-block: 2rem;
+      flex-direction: row;
+    }
+    .socialMedia-container > h2 {
+      font-size: 2rem;
+    }
+    .socialMedia-container > div:nth-child(1) {
+      display: flex;
+      gap: 2rem;
+    }
+    .icon-media :global(svg) {
+      width: 3em;
+      height: 3em;
+    }
+    .icon-media :global(svg path) {
+      fill: black;
+      fill-opacity: 1;
+      transition: fill 0.2s ease;
+    }
+    .icon-media:nth-child(1):hover :global(svg path) {
+      fill: #2432db;
+    }
+    .icon-media:nth-child(2):hover :global(svg path) {
+      fill: #ce0002;
+    }
+    .icon-media:nth-child(3):hover :global(svg path) {
+      fill: #f3ab49;
+    }
+    .whoPicture {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 0px 0px;
+    }
+    .white-section > article:first-child {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      padding-inline: 5vw;
+      padding-block: 4em;
+      margin-bottom: 4rem;
+    }
+    .picture-container {
+      width: 100%;
+      height: 100%;
+    }
+    .white-section > article:first-child > div > h2 {
+      font-size: 2.2rem;
+      text-align: left;
+    }
+    .box-containers {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .maps-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 40vh;
+      padding-inline: 5vw;
+      padding-block: 4rem;
+    }
+    .maps-container > div:nth-child(1) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .maps-container > div:nth-child(1) > h2 {
+      font-size: 3rem;
+      transform: rotate(-30deg);
+    }
+  }
+  .wide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 6rem;
+    gap: 0.5rem;
+    text-align: center;
+    transition: background-color 0.3s ease-in;
+    transition: box-shadow 0.3s ease-in;
+  }
+
+  .wide:nth-child(1) {
+    border-style: solid;
+    border-color: black;
+    border-width: 8px 4px 8px 0px;
+  }
+  .wide:nth-child(1):hover {
+    background-color: #b1e1fa;
+    box-shadow: inset 0 0 0 4px rgb(145, 214, 252);
+    cursor: pointer;
+  }
+  .wide:nth-child(2):hover {
+    background-color: #d25353;
+    box-shadow: inset 0 0 0 4px #c13838;
+    color: white;
+    cursor: pointer;
+  }
+  .wide:nth-child(3):hover {
+    background-color: #f9e8a2;
+    box-shadow: inset 0 0 0 4px #ffdf5b;
+    cursor: pointer;
+  }
+  .wide:nth-child(2) {
+    border-style: solid;
+    border-color: black;
+    border-width: 8px 4px 8px 4px;
+  }
+  .wide:nth-child(3) {
+    border-style: solid;
+    border-color: black;
+    border-width: 8px 0px 8px 4px;
+  }
+  .wide > h3 {
+    font-size: 2rem;
+  }
+  @media (min-width: 1400px) {
+    .white-section > article:first-child > div > p {
+      font-size: 1.5rem;
+    }
+    .white-section > article:first-child > div > h2 {
+      font-size: 2.5rem;
+      text-align: left;
+    }
+  }
+</style>
+<script define:vars={{ apiKey: import.meta.env.PUBLIC_GOOGLE_MAPS_KEY }}>
+  function initMap() {
+    const location = { lat: -34.907826768782165, lng: -56.16973118180946 };
+    const map = new google.maps.Map(document.getElementById("map"), {
+      // ← faltaba "const map ="
+      zoom: 16,
+      center: location,
+      mapId: "TU_MAP_ID",
+    });
+
+    new google.maps.Marker({ position: location, map });
+  }
+
+  const script = document.createElement("script");
+  script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap`;
+  script.async = true;
+  window.initMap = initMap;
+  document.head.appendChild(script);
+</script>
+
+<script>
+  const mq = window.matchMedia("(min-width: 900px)");
+  const boxes = document.querySelectorAll(".box-containers > div");
+
+  function toggleClass(e: MediaQueryList | MediaQueryListEvent) {
+    boxes.forEach((box) => {
+      box.classList.toggle("wide", e.matches);
+      box.classList.toggle("box", !e.matches);
+    });
+  }
+
+  toggleClass(mq);
+  mq.addEventListener("change", toggleClass);
+</script>

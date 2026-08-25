@@ -1,0 +1,22 @@
+---
+import logoHero from "../assets/logoMAS-2.svg";
+import { Image } from "astro:assets";
+---
+
+<footer class="footer">
+      <Image src={logoHero} alt="" class="logo" />
+</footer>
+<style>
+    .logo{
+        width: clamp(12rem, 20vw, 18rem);
+        height: fit-content;
+    }
+  .footer {
+    position: relative;
+    height: 20vh;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>

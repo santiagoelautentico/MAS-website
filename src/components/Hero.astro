@@ -1,0 +1,380 @@
+---
+import logoHero from "../assets/logoHomePage.svg";
+import warning from "../assets/warning.svg";
+import img1 from "../assets/fotosHome/1.webp";
+import img2 from "../assets/fotosHome/2.webp";
+import img3 from "../assets/fotosHome/3.webp";
+import img4 from "../assets/fotosHome/4.webp";
+import img5 from "../assets/fotosHome/5.webp";
+import img6 from "../assets/fotosHome/6.webp";
+import img7 from "../assets/fotosHome/7.webp";
+import img8 from "../assets/fotosHome/8.webp";
+import { Image } from "astro:assets";
+---
+
+<div class="hero-spacer">
+  <section id="home-section" class="home-section">
+    <div class="polygon">
+      <Image
+        src={warning}
+        alt="todos los sabados a las 16hrs"
+        class="warning"
+      />
+    </div>
+    <Image
+      src={img1}
+      alt="Foto MAS"
+      class="imgHero img1"
+      data-speed="0.1"
+      draggable={false}
+    />
+    <Image
+      src={img2}
+      alt="Foto MAS"
+      class="imgHero img2"
+      data-speed="0.3"
+      draggable={false}
+    />
+    <Image
+      src={img3}
+      alt="Foto MAS"
+      class="imgHero img3"
+      data-speed="0.15"
+      draggable={false}
+    />
+    <Image
+      src={img4}
+      alt="Foto MAS"
+      class="imgHero img4"
+      data-speed="0.25"
+      draggable={false}
+    />
+    <Image
+      src={img5}
+      alt="Foto MAS"
+      class="imgHero img5"
+      data-speed="0.2"
+      draggable={false}
+    />
+    <Image
+      src={img6}
+      alt="Foto MAS"
+      class="imgHero img6"
+      data-speed="0.3"
+      draggable={false}
+    />
+    <Image
+      src={img7}
+      alt="Foto MAS"
+      class="imgHero img7"
+      data-speed="0.18"
+      draggable={false}
+    />
+    <Image
+      src={img8}
+      alt="Foto MAS"
+      class="imgHero img8"
+      data-speed="0.22"
+      draggable={false}
+    />
+    <Image src={logoHero} alt="" class="logo" />
+  </section>
+</div>
+
+<style>
+  @keyframes shrink {
+    from {
+      transform: scale(2.5);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  @keyframes imagesShow {
+    from {
+      transform: scale(0);
+      /* opacity: 0; */
+    }
+    to {
+      transform: scale(1);
+      /* opacity: 1; */
+    }
+  }
+  .imgHero {
+    transform: scale(0);
+    /* opacity: 0; */
+    animation: imagesShow 1s ease-out forwards;
+    animation-delay: 0.5s;
+  }
+  .hero-spacer {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+  }
+
+  .home-section {
+    position: fixed; /* clave: fixed en vez de sticky, no depende de nada */
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .logo {
+    width: clamp(20rem, 35vw, 35rem);
+    z-index: 10;
+    animation: shrink 1s ease-out forwards;
+  }
+  .imgHero {
+    position: absolute;
+    border-radius: 50%;
+    z-index: 1;
+    object-fit: cover;
+    object-position: center;
+  }
+  .img1 {
+    width: clamp(9rem, 30vw, 16rem);
+    height: clamp(9rem, 30vw, 16rem);
+    right: 15vw;
+    bottom: 20vh;
+  }
+  .img2 {
+    width: clamp(15rem, 35vw, 23rem);
+    height: clamp(15rem, 35vw, 23rem);
+    bottom: -3vh;
+    object-position: -28px -25px;
+  }
+  .img3 {
+    width: clamp(10rem, 20vw, 15rem);
+    height: clamp(10rem, 20vw, 15rem);
+    left: 2vw;
+    bottom: 3vh;
+  }
+  .img4 {
+    width: clamp(8rem, 20vw, 14rem);
+    height: clamp(8rem, 20vw, 14rem);
+    left: 15vw;
+    bottom: 25vh;
+  }
+  .img5 {
+    width: clamp(13rem, 22vw, 22rem);
+    height: clamp(13rem, 22vw, 22em);
+    left: 5vw;
+    top: 5vh;
+  }
+  .img6 {
+    width: clamp(6rem, 20vw, 14rem);
+    height: clamp(6rem, 20vw, 14em);
+    right: 2vw;
+    bottom: 4vh;
+  }
+  .img7 {
+    width: clamp(8rem, 20vw, 17rem);
+    height: clamp(8rem, 20vw, 17em);
+    right: 20vw;
+    bottom: 60vh;
+  }
+  .img8 {
+    width: clamp(6rem, 20vw, 13rem);
+    height: clamp(6rem, 20vw, 13em);
+    right: 50vw;
+    bottom: 60vh;
+  }
+  .polygon {
+    position: absolute;
+    z-index: 100;
+    right: 1rem;
+    top: 20vh;
+  }
+  .starburst {
+    width: 322px;
+    height: auto;
+    display: block;
+  }
+
+  .home-section {
+  }
+
+  .home-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: #2432db;
+    z-index: 10000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+
+  .is-covered::before {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  @media screen and (min-width: 1650px) {
+    .img1 {
+      right: 20vw;
+    }
+    .img2 {
+      width: 30rem;
+      height: 30rem;
+    }
+    .img3 {
+      width: 20rem;
+      height: 20rem;
+    }
+    .img4 {
+      width: 15rem;
+      height: 15rem;
+      left: 20vw;
+    }
+    .img5 {
+      width: 28rem;
+      height: 28rem;
+      top: 5vh;
+    }
+    .img8 {
+      width: 20rem;
+      height: 20rem;
+      top: 8vh;
+      left: 35vw;
+    }
+    .img7 {
+      width: 22rem;
+      height: 22rem;
+      object-position: 86%;
+      right: 25vw;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .img1 {
+      bottom: 27vh;
+      right: 0.5rem;
+    }
+    .img2 {
+      z-index: 2;
+    }
+    .img3 {
+      bottom: 25vh;
+    }
+    .img4 {
+      bottom: 50vh;
+      left: 1rem;
+    }
+    .img5 {
+      left: 5vw;
+      bottom: 66vh;
+    }
+    .img6 {
+      right: 0vw;
+      bottom: 14vh;
+    }
+    .img7 {
+      right: 2vw;
+      bottom: 51vh;
+    }
+    .img8 {
+      right: 18vw;
+      bottom: 66vh;
+    }
+    .starburst {
+      width: 180px;
+    }
+    .polygon {
+      right: 0.5rem;
+      top: 3vh;
+    }
+  }
+  .warning {
+    width: clamp(12rem, 25vw, 30rem);
+    aspect-ratio: 1/1;
+    height: max-content;
+  }
+</style>
+
+<script>
+  const heroSection = document.getElementById(
+    "home-section",
+  ) as HTMLElement | null;
+  const MAX_BLUR = 15; // px, ajustá a gusto
+  const BLUR_THRESHOLD = 8; // px, a partir de acá se agrega la clase
+
+  let ticking = false;
+
+  function updateBlur() {
+    if (!heroSection) return;
+
+    const scrollY = window.scrollY;
+    const maxScroll =
+      document.documentElement.scrollHeight - window.innerHeight;
+    const progress = maxScroll > 0 ? Math.min(scrollY / maxScroll, 1) : 0;
+    const blurValue = progress * MAX_BLUR;
+
+    heroSection.style.filter = `blur(${blurValue}px)`;
+    heroSection.classList.toggle("is-covered", blurValue >= BLUR_THRESHOLD);
+
+    ticking = false;
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(updateBlur);
+      ticking = true;
+    }
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  updateBlur();
+
+  import { animate } from "motion";
+
+  // ... tu código de blur existente ...
+
+  const heroImages = document.querySelectorAll<HTMLElement>(".imgHero");
+
+  heroImages.forEach((img) => {
+    // Cuando termina la animación de entrada (imagesShow),
+    // liberamos el control del transform para que el drag pueda tomarlo
+    img.addEventListener(
+      "animationend",
+      () => {
+        img.style.animation = "none";
+        img.style.transform = "scale(1)";
+        img.style.cursor = "grab";
+      },
+      { once: true },
+    );
+
+    let startX = 0,
+      startY = 0,
+      offsetX = 0,
+      offsetY = 0;
+
+    img.addEventListener("pointerdown", (e) => {
+      e.preventDefault();
+      startX = e.clientX - offsetX;
+      startY = e.clientY - offsetY;
+      img.setPointerCapture(e.pointerId);
+      img.style.cursor = "grabbing";
+      img.style.zIndex = "50"; // sube la imagen que estás arrastrando por encima de las demás
+    });
+
+    img.addEventListener("pointermove", (e) => {
+      if (e.buttons !== 1) return;
+      offsetX = e.clientX - startX;
+      offsetY = e.clientY - startY;
+      animate(img, { x: offsetX, y: offsetY }, { duration: 0 });
+    });
+
+    img.addEventListener("pointerup", (e) => {
+      img.releasePointerCapture(e.pointerId);
+      img.style.cursor = "grab";
+    });
+  });
+</script>

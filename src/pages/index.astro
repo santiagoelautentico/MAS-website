@@ -1,0 +1,43 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from '../components/Hero.astro'
+import Content from '../components/Content.astro'
+import Footer from '../components/Footer.astro'
+---
+
+<Layout>
+  <Hero />
+  <Content />
+  <Footer />
+</Layout>
+
+<style is:global>
+  @font-face {
+    font-family: "clash-display-regular";
+    src: url("../assets/fonts/ClashDisplay-Regular.woff2");
+  }
+  @font-face {
+    font-family: "clash-display-medium";
+    src: url("../assets/fonts/ClashDisplay-Medium.woff2");
+  }
+  @font-face {
+    font-family: "clash-display-bold";
+    src: url("../assets/fonts/ClashDisplay-Bold.woff2");
+  }
+:root{
+  --fontBold: "clash-display-bold";
+  --fontRegular: "clash-display-regular";
+}
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+    padding: 0;
+    font-family: var(--fontBold);
+  }
+  body {
+    background-color: #2432db;
+    font-family: var(--fontRegular);
+    scroll-behavior: smooth;
+  }
+</style>
