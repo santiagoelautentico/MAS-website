@@ -10,6 +10,13 @@
   },
   "dependencies": {
     "astro": "^5.15.5",
-    "motion": "^13.1.1"
+    "motion": "^13.1.1",
+    "sharp": "^0.35.3"
+  },
+  "pnpm": {
+    "supportedArchitectures": {
+      "os": ["current", "linux"],
+      "cpu": ["x64", "arm64"]
+    }
   }
 }
