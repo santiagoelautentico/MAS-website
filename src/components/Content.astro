@@ -50,20 +50,21 @@ import tiktok from "../assets/tiktok-icon.svg?raw";
       <h2>Ven a visitarnos!</h2>
     </div>
     <div id="map" class="map-embed"></div>
-    <!-- <span>Puedes entrar por salterain, o por la iglesia</span> -->
-    <!-- <div>
-      <Image src={locationImg} alt="location img" class="locationImg" />
-    </div>
-    <p>
-      <span>Canelones 2130</span>
-      <br />
-      esquina <span>Joaquín de Salterain</span>
-    </p> -->
+    <span style="empty"></span>
+    <span class="span-data">Entrada por salterain o por la iglesia</span>
   </article>
   <article class="socialMedia-container">
     <div>
-      <a href="https://www.instagram.com/mastdb_/" class="icon-media" set:html={instagram} />
-      <a href="https://www.facebook.com/mastdb" class="icon-media" set:html={facebook} />
+      <a
+        href="https://www.instagram.com/mastdb_/"
+        class="icon-media"
+        set:html={instagram}
+      />
+      <a
+        href="https://www.facebook.com/mastdb"
+        class="icon-media"
+        set:html={facebook}
+      />
       <a href="" class="icon-media" set:html={tiktok} />
     </div>
     <div class="points">
@@ -76,6 +77,20 @@ import tiktok from "../assets/tiktok-icon.svg?raw";
 </section>
 
 <style>
+  .empty {
+    display: none;
+  }
+  .map-embed {
+    position: relative;
+  }
+  .map-embed::before {
+    content: "el pepe";
+    position: absolute;
+    bottom: -5rem;
+    background-color: red;
+    width: 10rem;
+    z-index: 100000;
+  }
   .socialMedia-container {
     display: flex;
     flex-direction: column;
@@ -193,7 +208,13 @@ import tiktok from "../assets/tiktok-icon.svg?raw";
   .icon-media {
     width: 3em;
   }
+  .span-data {
+    margin-top: -1.5rem;
+  }
   @media (min-width: 900px) {
+    .span-data {
+      padding-top: 1rem;
+    }
     .socialMedia-container > div:nth-child(2) {
       opacity: 1;
     }
