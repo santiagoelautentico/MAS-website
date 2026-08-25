@@ -100,6 +100,14 @@ import { Image } from "astro:assets";
       /* opacity: 1; */
     }
   }
+  @keyframes polygon {
+    from {
+      transform: translateX(25rem);
+    }
+    to {
+      transform: translateX(0rem);
+    }
+  }
   .imgHero {
     transform: scale(0);
     /* opacity: 0; */
@@ -190,6 +198,9 @@ import { Image } from "astro:assets";
     z-index: 100;
     right: 1rem;
     top: 20vh;
+    transform: translateX(35rem);
+    animation: polygon 1s ease-out forwards;
+    animation-delay: 1s;
   }
   .starburst {
     width: 322px;
