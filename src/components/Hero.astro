@@ -83,16 +83,28 @@ import { Image } from "astro:assets";
 
 <style>
   @keyframes shrink {
-    from { transform: scale(2.5); }
-    to { transform: scale(1); }
+    from {
+      transform: scale(2.5);
+    }
+    to {
+      transform: scale(1);
+    }
   }
   @keyframes imagesShow {
-    from { transform: scale(0); }
-    to { transform: scale(1); }
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
   }
   @keyframes polygon {
-    from { transform: translateX(25rem); }
-    to { transform: translateX(0rem); }
+    from {
+      transform: translateX(25rem);
+    }
+    to {
+      transform: translateX(0rem);
+    }
   }
 
   .imgHero {
@@ -102,7 +114,7 @@ import { Image } from "astro:assets";
   }
 
   .hero-spacer {
-    height: 100dvh;        /* dinámico */
+    height: 100dvh; /* dinámico */
     width: 100%;
     position: relative;
   }
@@ -111,7 +123,7 @@ import { Image } from "astro:assets";
     position: fixed;
     top: 0;
     left: 0;
-    height: 100dvh;        /* dinámico */
+    height: 100%; /* dinámico */
     width: 100%;
     z-index: 1;
     display: flex;
@@ -188,7 +200,7 @@ import { Image } from "astro:assets";
     position: absolute;
     z-index: 100;
     right: 1rem;
-    top: 20dvh;            /* dinámico */
+    top: 20dvh; /* dinámico */
     transform: translateX(35rem);
     animation: polygon 1s ease-out forwards;
     animation-delay: 1s;
@@ -407,4 +419,13 @@ import { Image } from "astro:assets";
     window.addEventListener("pointerup", onPointerUp);
     window.addEventListener("pointercancel", onPointerCancel);
   });
+  function setFixedHeight() {
+    const heroSection = document.getElementById("home-section");
+    if (heroSection) {
+      heroSection.style.height = window.innerHeight + "px";
+    }
+  }
+  window.addEventListener("load", setFixedHeight);
+  // También si la ventana se redimensiona (no por la barra, sino por rotación), actualizamos:
+  window.addEventListener("resize", setFixedHeight);
 </script>
