@@ -368,15 +368,17 @@ import { Image } from "astro:assets";
       offsetY = 0;
 
     img.addEventListener("pointerdown", (e) => {
+      if (window.innerWidth <= 900) return;
       e.preventDefault();
       startX = e.clientX - offsetX;
       startY = e.clientY - offsetY;
       img.setPointerCapture(e.pointerId);
       img.style.cursor = "grabbing";
-      img.style.zIndex = "50"; // sube la imagen que estás arrastrando por encima de las demás
+      img.style.zIndex = "50";
     });
 
     img.addEventListener("pointermove", (e) => {
+      if (window.innerWidth <= 900) return;
       if (e.buttons !== 1) return;
       offsetX = e.clientX - startX;
       offsetY = e.clientY - startY;
@@ -384,6 +386,7 @@ import { Image } from "astro:assets";
     });
 
     img.addEventListener("pointerup", (e) => {
+      if (window.innerWidth <= 900) return;
       img.releasePointerCapture(e.pointerId);
       img.style.cursor = "grab";
     });
