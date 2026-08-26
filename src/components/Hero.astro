@@ -310,6 +310,7 @@ import { Image } from "astro:assets";
 </style>
 
 <script>
+  import { animate } from "motion";
   const heroSection = document.getElementById(
     "home-section",
   ) as HTMLElement | null;
@@ -342,53 +343,83 @@ import { Image } from "astro:assets";
   window.addEventListener("scroll", onScroll, { passive: true });
 
   updateBlur();
-
-  import { animate } from "motion";
-
   // ... tu código de blur existente ...
-
-  const heroImages = document.querySelectorAll<HTMLElement>(".imgHero");
+  const heroImages = document.querySelectorAll(".imgHero");
 
   heroImages.forEach((img) => {
-    // Cuando termina la animación de entrada (imagesShow),
-    // liberamos el control del transform para que el drag pueda tomarlo
+    let posX = 0;
+    let posY = 0;
+    let dragEnabled = false;
+
+    // Esperamos a que termine la animación inicial
     img.addEventListener(
       "animationend",
       () => {
         img.style.animation = "none";
-        img.style.transform = "scale(1)";
+        img.style.transform = "scale(1)"; // fijamos scale
         img.style.cursor = "grab";
+        dragEnabled = true;
       },
       { once: true },
     );
 
-    let startX = 0,
-      startY = 0,
-      offsetX = 0,
-      offsetY = 0;
+    // Variables para el arrastre actual
+    let startMouseX = 0,
+      startMouseY = 0;
+    let startPosX = 0,
+      startPosY = 0;
+    let isDragging = false;
 
-    img.addEventListener("pointerdown", (e) => {
-      if (window.innerWidth <= 900) return;
+    const onPointerDown = (e) => {
+      if (!dragEnabled || window.innerWidth <= 900) return;
       e.preventDefault();
-      startX = e.clientX - offsetX;
-      startY = e.clientY - offsetY;
+
+      // Guardamos la posición actual del mouse y del elemento
+      startMouseX = e.clientX;
+      startMouseY = e.clientY;
+      startPosX = posX;
+      startPosY = posY;
+
+      isDragging = true;
       img.setPointerCapture(e.pointerId);
       img.style.cursor = "grabbing";
       img.style.zIndex = "50";
-    });
+    };
 
-    img.addEventListener("pointermove", (e) => {
-      if (window.innerWidth <= 900) return;
+    const onPointerMove = (e) => {
+      if (!isDragging || window.innerWidth <= 900) return;
       if (e.buttons !== 1) return;
-      offsetX = e.clientX - startX;
-      offsetY = e.clientY - startY;
-      animate(img, { x: offsetX, y: offsetY }, { duration: 0 });
-    });
 
-    img.addEventListener("pointerup", (e) => {
-      if (window.innerWidth <= 900) return;
+      const dx = e.clientX - startMouseX;
+      const dy = e.clientY - startMouseY;
+
+      // Nueva posición absoluta
+      posX = startPosX + dx;
+      posY = startPosY + dy;
+
+      // Aplicamos la traslación con motion (sin animación, solo seteo)
+      animate(img, { x: posX, y: posY }, { duration: 0 });
+    };
+
+    const onPointerUp = (e) => {
+      if (!isDragging) return;
+      isDragging = false;
       img.releasePointerCapture(e.pointerId);
       img.style.cursor = "grab";
-    });
+    };
+
+    const onPointerCancel = (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+      img.releasePointerCapture(e.pointerId);
+      img.style.cursor = "grab";
+    };
+
+    // Asignamos los eventos al elemento
+    img.addEventListener("pointerdown", onPointerDown);
+    // Para el movimiento y fin, los ponemos en window para que funcionen fuera del elemento
+    window.addEventListener("pointermove", onPointerMove);
+    window.addEventListener("pointerup", onPointerUp);
+    window.addEventListener("pointercancel", onPointerCancel);
   });
 </script>

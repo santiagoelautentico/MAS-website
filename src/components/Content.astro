@@ -5,6 +5,7 @@ import Image from "astro/components/Image.astro";
 import instagram from "../assets/ig-icon.svg?raw";
 import facebook from "../assets/face-icon.svg?raw";
 import tiktok from "../assets/tiktok-icon.svg?raw";
+import age from "../assets/age.svg";
 ---
 
 <section class="white-section">
@@ -44,6 +45,7 @@ import tiktok from "../assets/tiktok-icon.svg?raw";
       <h3>Reflexión</h3>
       <span>Bajo la palabra de dios, juntos reflexionamos y noseque</span>
     </div>
+    <Image class="age" src={age} alt="de 12 a 17 años" />
   </article>
   <article class="maps-container">
     <div>
@@ -209,9 +211,20 @@ import tiktok from "../assets/tiktok-icon.svg?raw";
     width: 3em;
   }
   .span-data {
-    margin-top: -1.5rem;
+  }
+  .age {
+    position: absolute;
+    right: -5rem;
+    top: 30%;
+    width: clamp(12rem, 20vw, 30rem);
   }
   @media (min-width: 900px) {
+    .age {
+      position: absolute;
+      right: -5rem;
+      top: 30%;
+      width: clamp(12rem, 20vw, 30rem);
+    }
     .span-data {
       padding-top: 1rem;
     }
