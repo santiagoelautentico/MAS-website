@@ -1,8 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/Hero.astro";
-import Content from "../components/Content.astro";
-import Footer from "../components/Footer.astro";
+import Hero from '../components/Hero.astro'
+import Content from '../components/Content.astro'
+import Footer from '../components/Footer.astro'
 ---
 
 <Layout>
@@ -12,9 +12,6 @@ import Footer from "../components/Footer.astro";
 </Layout>
 
 <style is:global>
-  body {
-    overflow-x: hidden;
-  }
   @font-face {
     font-family: "clash-display-regular";
     src: url("../assets/fonts/ClashDisplay-Regular.woff2");
@@ -31,10 +28,10 @@ import Footer from "../components/Footer.astro";
     font-family: "rx100";
     src: url("../assets/fonts/RX100-Regular.woff2");
   }
-  :root {
-    --fontBold: "clash-display-bold";
-    --fontRegular: "rx100";
-  }
+:root{
+  --fontBold: "clash-display-bold";
+  --fontRegular: "rx100";
+}
   h1,
   h2,
   h3 {

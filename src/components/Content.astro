@@ -31,7 +31,7 @@ import age from "../assets/age.svg";
         sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
     </div>
-    <Image class="age" src={age} alt="de 12 a 17 años" />
+    <!-- <Image class="age" src={age} alt="de 12 a 17 años" /> -->
   </article>
   <article class="box-containers">
     <div class="box">
@@ -220,7 +220,7 @@ import age from "../assets/age.svg";
   }
   .span-data {
   }
-  .age {
+  /* .age {
     position: absolute;
     z-index: 100000;
     right: -5px;
@@ -237,7 +237,7 @@ import age from "../assets/age.svg";
   .age.visible {
     transform: translateX(0);
     opacity: 1;
-  }
+  } */
 
   @media (min-width: 900px) {
     .age {
@@ -424,24 +424,24 @@ import age from "../assets/age.svg";
   toggleClass(mq);
   mq.addEventListener("change", toggleClass);
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const ageElement = document.querySelector(".age");
-    const container = document.querySelector(".box-containers");
+  // document.addEventListener("DOMContentLoaded", () => {
+  //   const ageElement = document.querySelector(".age");
+  //   const container = document.querySelector(".box-containers");
 
-    if (!ageElement || !container) return;
+  //   if (!ageElement || !container) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            ageElement.classList.add("visible");
-            observer.unobserve(container);
-          }
-        });
-      },
-      { threshold: 0.2 },
-    );
+  //   const observer = new IntersectionObserver(
+  //     (entries) => {
+  //       entries.forEach((entry) => {
+  //         if (entry.isIntersecting) {
+  //           ageElement.classList.add("visible");
+  //           observer.unobserve(container);
+  //         }
+  //       });
+  //     },
+  //     { threshold: 0.2 },
+  //   );
 
-    observer.observe(container);
-  });
+  //   observer.observe(container);
+  // });
 </script>
