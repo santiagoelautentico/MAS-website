@@ -13,81 +13,46 @@ import { Image } from "astro:assets";
 ---
 
 <div class="hero-spacer">
-  <section id="home-section" class="home-section">
-    <div class="polygon">
-      <Image
-        src={warning}
-        alt="todos los sabados a las 16hrs"
-        class="warning"
-      />
+  <Image src={logoHero} alt="" class="logo" />
+  <div class="polygon">
+    <Image src={warning} alt="todos los sabados a las 16hrs" class="warning" />
+  </div>
+  <section class="home-section" id="home-section">
+    <div class="img-container">
+      <Image src={img1} alt="Foto MAS" class="imgHero img1" data-speed="0.1" draggable={false} />
     </div>
-    <Image
-      src={img1}
-      alt="Foto MAS"
-      class="imgHero img1"
-      data-speed="0.1"
-      draggable={false}
-    />
-    <Image
-      src={img2}
-      alt="Foto MAS"
-      class="imgHero img2"
-      data-speed="0.3"
-      draggable={false}
-    />
-    <Image
-      src={img3}
-      alt="Foto MAS"
-      class="imgHero img3"
-      data-speed="0.15"
-      draggable={false}
-    />
-    <Image
-      src={img4}
-      alt="Foto MAS"
-      class="imgHero img4"
-      data-speed="0.25"
-      draggable={false}
-    />
-    <Image
-      src={img5}
-      alt="Foto MAS"
-      class="imgHero img5"
-      data-speed="0.2"
-      draggable={false}
-    />
-    <Image
-      src={img6}
-      alt="Foto MAS"
-      class="imgHero img6"
-      data-speed="0.3"
-      draggable={false}
-    />
-    <Image
-      src={img7}
-      alt="Foto MAS"
-      class="imgHero img7"
-      data-speed="0.18"
-      draggable={false}
-    />
-    <Image
-      src={img8}
-      alt="Foto MAS"
-      class="imgHero img8"
-      data-speed="0.22"
-      draggable={false}
-    />
-    <Image src={logoHero} alt="" class="logo" />
+    <div class="img-container">
+      <Image src={img2} alt="Foto MAS" class="imgHero img2" data-speed="0.3" draggable={false} />
+    </div>
+    <div class="img-container">
+      <Image src={img3} alt="Foto MAS" class="imgHero img3" data-speed="0.15" draggable={false} />
+    </div>
+    <div class="img-container">
+      <Image src={img4} alt="Foto MAS" class="imgHero img4" data-speed="0.25" draggable={false} />
+    </div>
+    <div class="img-container">
+      <Image src={img5} alt="Foto MAS" class="imgHero img5" data-speed="0.2" draggable={false} />
+    </div>
+    <div class="img-container">
+      <Image src={img6} alt="Foto MAS" class="imgHero img6" data-speed="0.3" draggable={false} />
+    </div>
+    <div class="img-container">
+      <Image src={img7} alt="Foto MAS" class="imgHero img7" data-speed="0.18" draggable={false} />
+    </div>
+    <div class="img-container">
+      <Image src={img8} alt="Foto MAS" class="imgHero img8" data-speed="0.22" draggable={false} />
+    </div>
   </section>
 </div>
 
 <style>
+  /* ===== Animaciones compartidas ===== */
   @keyframes shrink {
     from {
-      transform: scale(2.5);
+      transform: translate(-50%, -50%) scale(2.5);
     }
     to {
-      transform: scale(1);
+      transform: translate(-50%, -50%) scale(1);
     }
   }
   @keyframes imagesShow {
@@ -107,14 +72,9 @@ import { Image } from "astro:assets";
     }
   }
 
-  .imgHero {
-    transform: scale(0);
-    animation: imagesShow 1s ease-out forwards;
-    animation-delay: 0.5s;
-  }
-
+  /* ===== Base compartida (ambos breakpoints) ===== */
   .hero-spacer {
-    height: 100dvh; /* dinámico */
+    height: 100dvh;
     width: 100%;
     position: relative;
   }
@@ -123,93 +83,10 @@ import { Image } from "astro:assets";
     position: fixed;
     top: 0;
     left: 0;
-    height: 100%; /* dinámico */
+    height: 100dvh;
     width: 100%;
     z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     overflow: hidden;
-  }
-
-  .logo {
-    width: clamp(16rem, 35vw, 35rem);
-    z-index: 10;
-    animation: shrink 1s ease-out forwards;
-  }
-
-  .imgHero {
-    position: absolute;
-    border-radius: 50%;
-    z-index: 1;
-    object-fit: cover;
-    object-position: center;
-  }
-
-  /* TODAS LAS POSICIONES CON dvh Y dvw */
-  .img1 {
-    width: clamp(9rem, 30vmin, 16rem);
-    height: clamp(9rem, 30vmin, 16rem);
-    right: 15dvw;
-    bottom: 20dvh;
-  }
-  .img2 {
-    width: clamp(15rem, 35vmin, 23rem);
-    height: clamp(15rem, 35vmin, 23rem);
-    bottom: -3dvh;
-    object-position: -28px -25px;
-  }
-  .img3 {
-    width: clamp(10rem, 20vmin, 15rem);
-    height: clamp(10rem, 20vmin, 15rem);
-    left: 2dvw;
-    bottom: 3dvh;
-  }
-  .img4 {
-    width: clamp(8rem, 20vmin, 14rem);
-    height: clamp(8rem, 20vmin, 14rem);
-    left: 15dvw;
-    bottom: 25dvh;
-  }
-  .img5 {
-    width: clamp(11rem, 22vmin, 22rem);
-    height: clamp(11rem, 22vmin, 22rem);
-    left: 5dvw;
-    top: 5dvh;
-  }
-  .img6 {
-    width: clamp(6rem, 20vmin, 14rem);
-    height: clamp(6rem, 20vmin, 14rem);
-    right: 2dvw;
-    bottom: 4dvh;
-  }
-  .img7 {
-    width: clamp(8rem, 20vmin, 17rem);
-    height: clamp(8rem, 20vmin, 17rem);
-    right: 20dvw;
-    bottom: 60dvh;
-  }
-  .img8 {
-    width: clamp(6rem, 20vmin, 13rem);
-    height: clamp(6rem, 20vmin, 13rem);
-    right: 50dvw;
-    bottom: 60dvh;
-  }
-
-  .polygon {
-    position: absolute;
-    z-index: 100;
-    right: 1rem;
-    top: 20dvh; /* dinámico */
-    transform: translateX(35rem);
-    animation: polygon 1s ease-out forwards;
-    animation-delay: 1s;
-  }
-
-  .warning {
-    width: clamp(11rem, 25vw, 30rem);
-    aspect-ratio: 1/1;
-    height: max-content;
   }
 
   .home-section::before {
@@ -228,81 +105,236 @@ import { Image } from "astro:assets";
     pointer-events: auto;
   }
 
-  /* MEDIA QUERIES AJUSTADOS CON dvh Y dvw */
-  @media screen and (min-width: 1650px) {
-    .img1 {
-      right: 20dvw;
+  .logo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: clamp(16rem, 35vw, 35rem);
+    z-index: 10;
+    transform: translate(-50%, -50%) scale(2.5);
+    animation: shrink 1s ease-out forwards;
+  }
+
+  .polygon {
+    position: fixed;
+    z-index: 100;
+  }
+
+  .warning {
+    aspect-ratio: 1/1;
+    height: max-content;
+  }
+
+  .imgHero {
+    transform: scale(0);
+    animation: imagesShow 1s ease-out forwards;
+    animation-delay: 0.5s;
+    border-radius: 50%;
+    z-index: 1;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* ===== <= 900px: layout en grid (código 2) ===== */
+  @media (max-width: 900px) {
+    .home-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr 2fr;
+      grid-template-rows: 1fr 1fr 1fr;
     }
-    .img2 {
-      width: 30rem;
-      height: 30rem;
+
+    .imgHero {
+      width: 22vw;
+      height: 22vw;
     }
-    .img3 {
-      width: 20rem;
-      height: 20rem;
+
+    .img-container:nth-child(1) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .img4 {
-      width: 15rem;
-      height: 15rem;
-      left: 20dvw;
+    .img-container:nth-child(2) {
+      grid-column: 1/3;
+      grid-row: 2/3;
+      padding: 1rem;
+      display: flex;
     }
-    .img5 {
-      width: 28rem;
-      height: 28rem;
-      top: 5dvh;
+    .img-container:nth-child(2) > .imgHero {
+      width: 35vw;
+      height: 35vw;
     }
-    .img8 {
-      width: 20rem;
-      height: 20rem;
-      top: 8dvh;
-      left: 35dvw;
+    .img-container:nth-child(3) {
+      padding: 1rem;
     }
-    .img7 {
-      width: 22rem;
-      height: 22rem;
-      object-position: 86%;
-      right: 25dvw;
+    .img-container:nth-child(3) > .imgHero {
+      width: 25vw;
+      height: 25vw;
+    }
+    .img-container:nth-child(4) {
+      grid-column: 3/3;
+      grid-row: 2/3;
+      display: flex;
+      justify-content: end;
+    }
+    .img-container:nth-child(4) > .imgHero {
+      width: 30vw;
+      height: 30vw;
+    }
+    .img-container:nth-child(5) {
+      grid-column: 1/2;
+      grid-row: 1/2;
+      padding: 1rem;
+    }
+    .img-container:nth-child(5) > .imgHero {
+      width: 8rem;
+      height: 8rem;
+    }
+    .img-container:nth-child(6) {
+      grid-column: 3/3;
+      grid-row: 3/3;
+      padding: 1rem;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 5rem;
+    }
+    .img-container:nth-child(7) {
+      grid-column: 2/3;
+      grid-row: 3/3;
+      padding: 1rem;
+      display: flex;
+    }
+    .img-container:nth-child(7) > .imgHero {
+      width: 6rem;
+      height: 6rem;
+    }
+    .img-container:nth-child(8) {
+      display: flex;
+    }
+    .img-container:nth-child(8) > .imgHero {
+      width: 8rem;
+      height: 8rem;
+    }
+
+    .polygon {
+      right: 0;
+      top: 16dvh;
+    }
+    .warning {
+      width: clamp(9rem, 25vw, 30rem);
     }
   }
 
-  @media (max-width: 700px) {
+  /* ===== > 900px: layout disperso con posiciones absolutas (código 1) ===== */
+  @media (min-width: 901px) {
+    .home-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .imgHero {
+      position: absolute;
+    }
+
     .img1 {
-      bottom: 27dvh;
-      right: 0.5rem;
+      width: clamp(9rem, 30vmin, 16rem);
+      height: clamp(9rem, 30vmin, 16rem);
+      right: 15dvw;
+      bottom: 20dvh;
     }
     .img2 {
-      z-index: 2;
+      width: clamp(15rem, 35vmin, 23rem);
+      height: clamp(15rem, 35vmin, 23rem);
+      bottom: -30dvh;
+      object-position: -28px -25px;
+      position: relative;
     }
     .img3 {
-      bottom: 25dvh;
+      width: clamp(10rem, 20vmin, 15rem);
+      height: clamp(10rem, 20vmin, 15rem);
+      left: 2dvw;
+      bottom: 3dvh;
     }
     .img4 {
-      bottom: 52dvh;
-      left: 1rem;
+      width: clamp(8rem, 20vmin, 14rem);
+      height: clamp(8rem, 20vmin, 14rem);
+      left: 15dvw;
+      bottom: 25dvh;
     }
     .img5 {
-      left: 1dvw;
-      top: 1dvh;
+      width: clamp(11rem, 22vmin, 22rem);
+      height: clamp(11rem, 22vmin, 22rem);
+      left: 5dvw;
+      top: 5dvh;
     }
     .img6 {
-      right: 0dvw;
-      bottom: 14dvh;
+      width: clamp(6rem, 20vmin, 14rem);
+      height: clamp(6rem, 20vmin, 14rem);
+      right: 2dvw;
+      bottom: 4dvh;
     }
     .img7 {
-      right: 2dvw;
-      bottom: 51dvh;
+      width: clamp(8rem, 20vmin, 17rem);
+      height: clamp(8rem, 20vmin, 17rem);
+      right: 20dvw;
+      bottom: 60dvh;
     }
     .img8 {
-      right: 30dvw;
-      bottom: 66dvh;
+      width: clamp(6rem, 20vmin, 13rem);
+      height: clamp(6rem, 20vmin, 13rem);
+      right: 50dvw;
+      bottom: 60dvh;
     }
+
     .polygon {
-      right: 0rem;
-      top: 1dvh;
+      right: 1rem;
+      top: 20dvh;
+      transform: translateX(35rem);
+      animation: polygon 1s ease-out forwards;
+      animation-delay: 1s;
     }
     .warning {
       width: clamp(11rem, 25vw, 30rem);
     }
+
+    @media screen and (min-width: 1650px) {
+      .img1 {
+        right: 20dvw;
+      }
+      .img2 {
+        width: 30rem;
+        height: 30rem;
+      }
+      .img3 {
+        width: 20rem;
+        height: 20rem;
+      }
+      .img4 {
+        width: 15rem;
+        height: 15rem;
+        left: 20dvw;
+      }
+      .img5 {
+        width: 28rem;
+        height: 28rem;
+        top: 5dvh;
+      }
+      .img8 {
+        width: 20rem;
+        height: 20rem;
+        top: 8dvh;
+        left: 35dvw;
+      }
+      .img7 {
+        width: 22rem;
+        height: 22rem;
+        object-position: 86%;
+        right: 25dvw;
+      }
+    }
+  }
+  .polygon {
+    z-index: 5;
   }
 </style>
 
@@ -311,10 +343,20 @@ import { Image } from "astro:assets";
   const heroSection = document.getElementById(
     "home-section",
   ) as HTMLElement | null;
+  const polygonEl = document.querySelector(".polygon") as HTMLElement | null;
   const MAX_BLUR = 15; // px, ajustá a gusto
   const BLUR_THRESHOLD = 8; // px, a partir de acá se agrega la clase
+  const POLYGON_EXIT_DISTANCE = 50; // rem, misma distancia que la animación de entrada
+  const POLYGON_MAX_BLUR = 10; // px
 
   let ticking = false;
+  let polygonFollowsScroll = false;
+
+  function applyPolygonOffset(progress: number) {
+    if (!polygonEl || !polygonFollowsScroll) return;
+    polygonEl.style.transform = `translateX(${progress * POLYGON_EXIT_DISTANCE}rem)`;
+    polygonEl.style.filter = `blur(${progress * POLYGON_MAX_BLUR}px)`;
+  }
 
   function updateBlur() {
     if (!heroSection) return;
@@ -328,6 +370,8 @@ import { Image } from "astro:assets";
     heroSection.style.filter = `blur(${blurValue}px)`;
     heroSection.classList.toggle("is-covered", blurValue >= BLUR_THRESHOLD);
 
+    applyPolygonOffset(progress);
+
     ticking = false;
   }
 
@@ -339,8 +383,30 @@ import { Image } from "astro:assets";
   }
   window.addEventListener("scroll", onScroll, { passive: true });
 
+  // El polygon tiene una animación de entrada por CSS (solo en desktop).
+  // Hasta que esa animación termine, la dejamos controlar el transform;
+  // recién ahí el scroll toma el control para devolverlo hacia afuera.
+  if (polygonEl) {
+    const hasEntranceAnimation =
+      getComputedStyle(polygonEl).animationName !== "none";
+
+    if (hasEntranceAnimation) {
+      polygonEl.addEventListener(
+        "animationend",
+        () => {
+          polygonEl.style.animation = "none";
+          polygonFollowsScroll = true;
+          updateBlur();
+        },
+        { once: true },
+      );
+    } else {
+      polygonFollowsScroll = true;
+    }
+  }
+
   updateBlur();
-  // ... tu código de blur existente ...
+
   const heroImages = document.querySelectorAll(".imgHero");
 
   heroImages.forEach((img) => {
@@ -348,19 +414,17 @@ import { Image } from "astro:assets";
     let posY = 0;
     let dragEnabled = false;
 
-    // Esperamos a que termine la animación inicial
     img.addEventListener(
       "animationend",
       () => {
         img.style.animation = "none";
-        img.style.transform = "scale(1)"; // fijamos scale
+        img.style.transform = "scale(1)";
         img.style.cursor = "grab";
         dragEnabled = true;
       },
       { once: true },
     );
 
-    // Variables para el arrastre actual
     let startMouseX = 0,
       startMouseY = 0;
     let startPosX = 0,
@@ -371,7 +435,6 @@ import { Image } from "astro:assets";
       if (!dragEnabled || window.innerWidth <= 900) return;
       e.preventDefault();
 
-      // Guardamos la posición actual del mouse y del elemento
       startMouseX = e.clientX;
       startMouseY = e.clientY;
       startPosX = posX;
@@ -390,11 +453,9 @@ import { Image } from "astro:assets";
       const dx = e.clientX - startMouseX;
       const dy = e.clientY - startMouseY;
 
-      // Nueva posición absoluta
       posX = startPosX + dx;
       posY = startPosY + dy;
 
-      // Aplicamos la traslación con motion (sin animación, solo seteo)
       animate(img, { x: posX, y: posY }, { duration: 0 });
     };
 
@@ -412,13 +473,12 @@ import { Image } from "astro:assets";
       img.style.cursor = "grab";
     };
 
-    // Asignamos los eventos al elemento
     img.addEventListener("pointerdown", onPointerDown);
-    // Para el movimiento y fin, los ponemos en window para que funcionen fuera del elemento
     window.addEventListener("pointermove", onPointerMove);
     window.addEventListener("pointerup", onPointerUp);
     window.addEventListener("pointercancel", onPointerCancel);
   });
+
   function setFixedHeight() {
     const heroSection = document.getElementById("home-section");
     if (heroSection) {
@@ -426,6 +486,5 @@ import { Image } from "astro:assets";
     }
   }
   window.addEventListener("load", setFixedHeight);
-  // También si la ventana se redimensiona (no por la barra, sino por rotación), actualizamos:
   window.addEventListener("resize", setFixedHeight);
 </script>
